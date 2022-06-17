@@ -1,8 +1,7 @@
 require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-platform :ios, '12.0'
-install! 'cocoapods', :deterministic_uuids => false
+platform :ios, '11.0'
 
 target 'SwiftBel' do
   config = use_native_modules!
@@ -18,7 +17,6 @@ target 'SwiftBel' do
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
-  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
   permissions_path = '../node_modules/react-native-permissions/ios'
   pod 'Permission-Camera', :path => "#{permissions_path}/Camera"
   pod 'Permission-Microphone', :path => "#{permissions_path}/Microphone"

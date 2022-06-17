@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "542308296429",
+    "project_id": "swiftbel",
+    "storage_bucket": "swiftbel.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:542308296429:android:bde6f943e53d6789f94ee4",
+        "android_client_info": {
+          "package_name": "com.mobileapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "542308296429-bs0rsa2h4uordbr5j6s22a0ovs7n5m5a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mobileapp",
+            "certificate_hash": "e436ffc4ae0dca222d12785882f27c94370876e7"
+          }
+        },
+        {
+          "client_id": "542308296429-jhso8316l9a0e1vra64e6d3qa2283t0l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDC8F29YJAnHp6qxyBf7YWFGPzj-c04rRA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "542308296429-jhso8316l9a0e1vra64e6d3qa2283t0l.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "542308296429-8g3pta4kln2iv8469aq8dmuu01r815me.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sixforces.SwiftBel"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:542308296429:android:ad8e48f82e78124df94ee4",
+        "android_client_info": {
+          "package_name": "com.swiftbel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "542308296429-m3adi1f8tv7gamhdu4jvhisaan4btsmk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.swiftbel",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "542308296429-jhso8316l9a0e1vra64e6d3qa2283t0l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDC8F29YJAnHp6qxyBf7YWFGPzj-c04rRA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "542308296429-jhso8316l9a0e1vra64e6d3qa2283t0l.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "542308296429-8g3pta4kln2iv8469aq8dmuu01r815me.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sixforces.SwiftBel"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
