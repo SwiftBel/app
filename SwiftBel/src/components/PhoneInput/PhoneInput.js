@@ -27,14 +27,19 @@ const PhoneInpuField = (props) => {
   }
   return (
       <View style={[styles.phonInputContainer,props.PhoneInputContainer,{borderColor:bordrColor?palette.black:palette.lightGrey}]}>
+           {
+          props.header?
+          <Text style={{...styles.headerName,...props.HeaderStyle}}>{props.headerName}</Text>:
+          null
+        }
         <PhoneInput
           containerStyle={{ width: '100%',alignItems:'center' }}
-          textContainerStyle={[styles.phoneInputTextStyle,{borderColor:bordrColor?palette.black:palette.lightGrey}]}
+          textContainerStyle={[styles.phoneInputTextStyle,{borderColor:bordrColor?palette.black:palette.lightGrey},props?.phoneInputStyle]}
           textInputStyle={{ fontSize: 14 ,color:'black',alignItems:'center',height:50}}
           ref={phoneRef}
           initialCountry={'CA'}
           defaultCode='CA'
-          flagButtonStyle={styles.flagStyle}
+          flagButtonStyle={[styles.flagStyle,props?.flagButtonStyle]}
           offset={10}
           allowZeroAfterCountryCode
           placeholder='(123) 455-6789'

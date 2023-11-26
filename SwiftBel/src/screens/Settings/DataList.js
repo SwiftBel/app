@@ -1,15 +1,17 @@
-import { Analytics, editProfile, logoPerson } from "../../assets";
+import { Analytics, editProfile, info, logoPerson, setting } from "../../assets";
 
 export const DataList=[
 {
     title:'Legal',
     data:[
      {
+        icon:setting,
         title:'Settings',
         screen:''
      },
      {
-        title:'Get help',
+      icon:info,
+        title:'privacy policy',
         screen:''
      }
     ]

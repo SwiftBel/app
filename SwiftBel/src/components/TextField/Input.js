@@ -1,11 +1,12 @@
-import { TouchableOpacity,TextInput,View,Image,Text } from "react-native";
+import { TouchableOpacity,View,Image,Text } from "react-native";
 import React,{useState,useEffect,useRef} from 'react'
 import { palette } from "../../theme/index";
 //import { validate } from "../../utils/functions";
 import Style from "./Styles";
-import { Caution ,Right} from "../../assets";
+import { Caution ,hide,Right, show} from "../../assets";
 import { EmailValidation } from "../../utils/CommonFunctions";
 import { heightPercentageToDP } from "../../utils/Responsive";
+import { TextInput } from "react-native-paper";
 function Input(props) {
   const [error, setError] = useState("");
   const [borderColor,setBorderColor]=useState(palette.lightGrey)
@@ -46,6 +47,7 @@ function Input(props) {
   setSecureText(true)
     
 }
+const Label = <Text style={{color:palette.grey,paddingBottom:10}}>{props.placeholder ? props.placeholder :''}</Text>;
   return (
     <View style={[props.inputContainer]}>
       {
@@ -58,20 +60,30 @@ function Input(props) {
     <TextInput
               
                 underlineColorAndroid="transparent"
+                
                 {...props}
+                underlineColor={'transparent'}
+         
                 // Margin is for the keyboard Avoid View and padding for shift the View up
                 style={[{
                  width:'90%',
-                 color:palette.black
+                 color:palette.black,
+             
+                 height:58,
+                 backgroundColor:'white',
+                 borderRadius:10,
+          
                 },props.inputContainerStyle]}
-                placeholder={
-                  props.placeholder ? props.placeholder :''
+                label={
+                  Label
                 }
+                theme={{colors: {primary: 'transparent',underlineColor:'transparent',}}}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
                 accessible={true} 
                 keyboardType={props.keyboardType?props.keyboardType:'default'}
                 value={props.value}
+             
                 returnKeyType={'next'}
                 multiline={props.multiline?props.multiline:false}
                 onSubmitEditing={props.onSubmitEditing}
@@ -95,9 +107,12 @@ function Input(props) {
             {
               props.showHide?
               <TouchableOpacity style={{alignSelf:'center'}} onPress={()=>showHidePassword()}>
-              <Text style={{textAlign:'center',fontWeight:'bold'}}>
-                {props.showHide?secureText?"show":"hide":props.leftText}
-              </Text>
+                <Image
+                source={props.showHide?secureText?show:hide:props.leftimgae}
+                style={{width:20,height:20}}
+                resizeMode='contain'
+                />
+            
               </TouchableOpacity>
               :null
             }
@@ -105,7 +120,9 @@ function Input(props) {
         </View>
             {
               props.errorMessage?
+              <View style={{justifyContent:'center',width:'95%'}}>
               <Text style={[Style.PasswordValidation,{ color:palette.pink}]}> {props.errorMessage}</Text>
+              </View>
               :null
             }
         </View>

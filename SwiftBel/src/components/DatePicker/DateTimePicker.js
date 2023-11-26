@@ -64,8 +64,8 @@ const DateTimePicker = (props) => {
                             <View style={{ alignSelf: 'center',marginTop:20}}>
                               <CalendarPicker
                                 onDateChange={onChange}
-                                scrollable={true}
-                               horizontal={true}
+                                //scrollable={true}
+                              // horizontal={true}
                                // initialDate={new Date()}
                                 maxDate={"01/01/2050"}
                                 minDate={new Date()}

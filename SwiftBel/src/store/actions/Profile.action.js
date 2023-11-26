@@ -25,3 +25,78 @@ export const getService = (data) => async (dispatch) => {
   return res;
 };
 
+export const searchFilter = (data) => async (dispatch, getstate) => {
+  const { mobileNo } = getstate().Profile
+  console.log(data,"data")
+  const res = await NetworkOps.post(ServiceEnum.searchFilter,data);
+  dispatch( genAction(TYPE.ServiceProviderData,res.data))
+  return res;
+};
+
+export const getProfileDetails = (uniqieURL) => async (dispatch, getstate) => {
+  const { authToken } = getstate().Login
+  console.log(uniqieURL,"url")
+  const uniqueUrl = await EncryptedStorage.getItem("access_token");
+  const session = JSON.parse(uniqueUrl)
+  const res = await NetworkOps.get(`business/${session.username}`);
+  if (res.status == true) {
+    dispatch(genAction(TYPE.profileDetails, res.data));
+    dispatch(genAction(TYPE.addService,res.servicesOfferedPhoto))
+  }
+  return res.data;
+}
+
+export const getMovingInputDetails = (data) => async (dispatch, getstate) => {
+ console.log(data,"data")
+  const res = await NetworkOps.put(ServiceEnum.movingInput,data);
+  if (res.status == true) {
+    dispatch( genAction(TYPE.ServiceProviderData,res.data))
+    dispatch( genAction(TYPE.estimateDetails,res.finalData))
+  }
+  return res;
+}
+export const getPressureWashDetails = (data) => async (dispatch, getstate) => {
+  console.log(data,"data")
+   const res = await NetworkOps.put(ServiceEnum.pressurewashing,data);
+   if (res.status == true) {
+     dispatch( genAction(TYPE.ServiceProviderData,res.data))
+     dispatch( genAction(TYPE.estimateDetails,res.finalData))
+   }
+   return res;
+ }
+ export const getElectricianDetails = (data) => async (dispatch, getstate) => {
+  console.log(data,"data")
+   const res = await NetworkOps.put(ServiceEnum.electricians,data);
+   if (res.status == true) {
+     dispatch( genAction(TYPE.ServiceProviderData,res.data))
+     dispatch( genAction(TYPE.estimateDetails,res.finalData))
+   }
+   return res;
+ }
+ export const getPlumberDetails = (data) => async (dispatch, getstate) => {
+  console.log(data,"data")
+   const res = await NetworkOps.put(ServiceEnum.Plumbers,data);
+   if (res.status == true) {
+     dispatch( genAction(TYPE.ServiceProviderData,res.data))
+     dispatch( genAction(TYPE.estimateDetails,res.finalData))
+   }
+   return res;
+ }
+ export const getCarpetCleaningDetails = (data) => async (dispatch, getstate) => {
+  console.log(data,"data")
+   const res = await NetworkOps.put(ServiceEnum.carpetcleaning,data);
+   if (res.status == true) {
+     dispatch( genAction(TYPE.ServiceProviderData,res.data))
+     dispatch( genAction(TYPE.estimateDetails,res.finalData))
+   }
+   return res;
+ }
+ export const paymentBooking=(data,params)=>async(dispatch,getstate)=>{
+  const details={
+    "date": params?.date,
+    "time": params?.time,
+    "amount": data?.estimatedHourlyPrice
+  }
+  const res=await NetworkOps.post(`${ServiceEnum.paymentBooking}?sP=${data?.spId}&object=${params?._id}&serviceName=Moving`,details)
+  return res;
+}

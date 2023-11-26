@@ -47,11 +47,12 @@ const AboutCompany=(props)=>{
     <View style={{flex:1,width:"95%",height:250,alignSelf:'center'}}>
     <MapviewList
     onDragEnd={(e) => console.log(e, "e")}
-    position={{ latitude:data?.location?.lng||0, longitude:data?.location?.lat||0}}
-    latitudeDelta={ 0.015}
-    longitudeDelta={ 0.0121}
-    mapStyle={{position:'absolute'}}
+    position={{ latitude:data?.location?.lng, longitude:data?.location?.lat}}
+   // latitudeDelta={ 0.015}
+   // longitudeDelta={ 0.0121}
+  //  mapStyle={{position:'absolute'}}
 />
+
 </View>
     </View>
     )

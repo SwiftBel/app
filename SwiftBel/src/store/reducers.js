@@ -5,7 +5,8 @@ import ProfileReducer from './reducers/Profile.reducer';
 const appReducers = combineReducers({
   SignUp:SignUp,
   Login:Login,
-  Profile:ProfileReducer
+  Profile:ProfileReducer,
+
 });
 
 const Reducer = (state, action) => {

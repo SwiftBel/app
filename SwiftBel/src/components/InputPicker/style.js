@@ -107,14 +107,12 @@ export default {
   PickerButton:{
     justifyContent: 'center',
     backgroundColor: '#ffffff',
-    borderRadius: 25,
+   
     width:'100%',
-    padding: 10,
-    height:50,
-    borderWidth:0.6,
+ 
     borderColor:palette.grey,
-    marginLeft:wp('2%'),
-    marginRight:wp('2%')
+    marginLeft:wp('1%'),
+    marginRight:wp('1%')
   },
   PickerButtontext:{
     color: '#2d3436',
@@ -126,8 +124,7 @@ export default {
     flexDirection:'row',
     justifyContent:'space-between',
     alignItems:'center',
-    marginRight:wp('1%'),
-    marginLeft:wp('1%'),
+  
   },
   Icon:{
     height:8,
@@ -135,15 +132,15 @@ export default {
     alignSelf:'center'
   },
   headerText:{
-    fontSize:14,
+    fontSize:12,
     fontFamily:"Roobert-Medium",
     fontWeight:'400',
-    margin:10,
-    marginLeft:20,
-    color:palette.black
+    marginLeft:5,
+    marginBottom:8,
+    color:palette.grey
   },
   btnContainer: {
-    marginLeft: 5
+   
   },
   modalButton:{
     justifyContent: 'space-between',

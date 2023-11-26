@@ -14,9 +14,5 @@ export const ListData=[
     icon:Apple,
     key:2
 },
-{
-    name:'Email',
-    icon:Mail,
-    key:3
-}
+
 ]

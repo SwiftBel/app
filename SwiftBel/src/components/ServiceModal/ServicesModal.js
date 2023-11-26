@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { View, Modal, Text, Image, ScrollView, TouchableOpacity } from 'react-native'
 import { chevrondown, Cross, Delete } from '../../assets'
 import { palette } from '../../theme'
+
 import styles from './Style'
 
 const ServiceModal = props => {
@@ -56,7 +57,7 @@ const ServiceModal = props => {
                 style={[styles.overlayStyle, props.overlayStyle]}
             >
                 <View style={[styles.optionContainer, props.optionContainer]}>
-                    <View style={{ height: 40, justifyContent: 'space-between', alignItems: 'flex-start', marginLeft: 20, flexDirection: 'row' }}>
+                    <View style={styles.serviceContainer}>
                         <TouchableOpacity onPress={() => setModalVisible(false)} style={{ alignSelf: 'center' }}>
                             <Image
                                 source={Cross}
@@ -64,7 +65,7 @@ const ServiceModal = props => {
                                 style={{ height: 35, width: 35 }}
                             />
                         </TouchableOpacity>
-                        <Text style={{ alignSelf: 'center', fontSize: 16, fontWeight: '500', marginRight: 160 }}>Home Services</Text>
+                        <Text style={styles.modatHeaderText}>Home Services</Text>
                     </View>
 
                     <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="always">

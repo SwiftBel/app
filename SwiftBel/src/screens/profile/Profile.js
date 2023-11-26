@@ -10,8 +10,6 @@ import TopScroolableTabBar from '../profile/Components/TopScroolableTabBar'
 import AboutCompany from './AboutCompany/AboutCompany'
 import { getPostData, getProfileDetails, getBannerDetails, UploadBannerImage } from '../../store/actions/Profile.action'
 import HeaderList from './Reviews/HeaderList '
-import PhotoUpload from '../../components/PhotoUpload/PhotoUpload'
-import { ServicesData } from './Services/ServicesData'
 import Services from './Services/Services'
 import { useSelector, useDispatch } from 'react-redux'
 import Loader from '../../components/Loader/Loader'
@@ -27,92 +25,62 @@ const Profile = (props) => {
     const [loader,setLoader]=useState(false)
     const [profilePicture, setProfilePicture] = useState('https://myawsbucket-swiftbel.s3.ca-central-1.amazonaws.com/test1/1649827692112i.png')
     const [bannerPicture, setBannerPicture] = useState('https://myawsbucket-swiftbel.s3.ca-central-1.amazonaws.com/test1/1649827692112i.png')
-    const serviceData= profileData?.profileDetails?.servicesOffered
+    const serviceData= profileData?.services
     useEffect(() => {
-        init();
+        //init();
     }, [])
 
-    const init = async () => {
-        setLoader(true);
-        await dispatch(getPostData());
-        await dispatch(getProfileDetails());
-        await dispatch(getBannerDetails());
-        setLoader(false)
-    }
+    // const init = async () => {
+    //     setLoader(true);
+    //     await dispatch(getPostData());
+    //     await dispatch(getProfileDetails());
+    //     await dispatch(getBannerDetails());
+    //     setLoader(false)
+    // }
     console.log(profileData, "dataaaa")
     const headerrender = () => {
         return (
             <View style={{ backgroundColor: 'white' }}>
                 <MainHeader
-                    centerText={profileData.bannerDetails.businessName}
+                    centerText={profileData.profileDetails.businessName}
                     leftText="Back"
                     RightImage={Etc}
                     onleftClick={() => props.navigation.goBack()}
                     customStyle={Style.postHeader}
                 />
                 <Loader visible={loader}/>
-                {loader?<BannerLoader/>:<TouchableOpacity style={Style.bannerContainer} onPress={() => setIsBannerVisible(true)}>
+                {loader?<BannerLoader/>:<View style={Style.bannerContainer} >
                     <Image
-                        source={{ uri: profileData.bannerDetails.bannerImage ? profileData.bannerDetails.bannerImage : bannerPicture }}
+                        source={{ uri: profileData.profileDetails.bannerImage ? profileData.profileDetails.bannerImage : bannerPicture }}
                         resizeMode='cover'
                         style={Style.bannerImage_Style}
                     />
-                </TouchableOpacity  >}
-                <PhotoUpload
-                    isModalVisible={isBannersVisible}
-                    onChange={async (item) => {
-                        const res = await dispatch(UploadBannerImage(item, 'banner'))
-                        setLoader(true)
-                        if (res.status == true) {
-                            await dispatch(getBannerDetails());
-                        }
-                        setLoader(false)
-                    }}
-                    onCancel={() => setIsBannerVisible(false)}
-                    close={() => setIsBannerVisible(false)}
-                />
-                {loader?<AvatarLoader/>:<TouchableOpacity style={Style.profileContainer} onPress={() => setIsProfileVisible(true)}>
+                </View  >}
+               
+                {loader?<AvatarLoader/>:<View style={Style.profileContainer} onPress={() => setIsProfileVisible(true)}>
                     <View style={Style.profileButton}>
                         <Image
-                            source={{ uri: profileData.bannerDetails.logoImage ? profileData.bannerDetails.logoImage : profilePicture }}
+                            source={{ uri: profileData.profileDetails.logoImage ? profileData.profileDetails.logoImage : profilePicture }}
                             resizeMode='cover'
                             style={Style.profileImage}
                         />
                     </View>
-                </TouchableOpacity>}
-                <PhotoUpload
-                    isModalVisible={isProfileVisible}
-                    cropperCircleOverlay={true}
-                    onChange={async (item) => {
-                        const res = await dispatch(UploadBannerImage(item, 'logo'))
-                        setLoader(true);
-                        if (res.status == true) {
-                            await dispatch(getBannerDetails());
-                        }
-                        setLoader(false)
-                    }}
-                    onCancel={() => setIsProfileVisible(false)}
-                    close={() => setIsProfileVisible(false)}
-                />
-                <Text style={Style.MottoText}>{profileData.bannerDetails.tagLine}</Text>
+                </View>}
+                <Text style={Style.MottoText}>{profileData.profileDetails.tagLine}</Text>
                 <View style={Style.informationContainer}>
-                    <Text style={Style.InformationTextStyle}>{`${profileData.bannerDetails.rating}Rating`}</Text>
-                    <Text style={Style.InformationTextStyle}>{`${profileData.bannerDetails.likes}Likes`}</Text>
-                    <Text style={Style.InformationTextStyle}>{`${profileData.bannerDetails.moves}Moves`}</Text>
+                    <Text style={Style.InformationTextStyle}>{`${profileData.profileDetails.rating}Rating`}</Text>
+                    <Text style={Style.InformationTextStyle}>{`${profileData.profileDetails.likes}Likes`}</Text>
+                    <Text style={Style.InformationTextStyle}>{`${profileData.profileDetails.moves}Moves`}</Text>
                 </View>
                 <View style={{ alignItems: 'center', marginBottom: 10 }}>
-                    <PhotoUpload
-                        isModalVisible={isAddPostVisible}
-                        multiple={true}
-                        onChange={(item) => props.navigation.navigate('addNewPost', {
-                            data: item
-                        })}
-                        onCancel={() => setisAddPostVisible(false)}
-                        close={() => setisAddPostVisible(false)}
-                    />
-                    <TouchableOpacity style={Style.newPostButton} onPress={() => setisAddPostVisible(true)}>
-                        <Text style={Style.newPostButtonText}>Add New Post</Text>
+                    <View style={{flexDirection:'row',justifyContent:'space-between'}}>
+                    <TouchableOpacity style={Style.favourateButton} onPress={() => setisAddPostVisible(true)}>
+                        <Text style={Style.favourateButtonText}>Add to favourites</Text>
                     </TouchableOpacity>
+                    <TouchableOpacity style={Style.bookButton} onPress={() => setisAddPostVisible(true)}>
+                        <Text style={Style.bookButtonText}>Book</Text>
+                    </TouchableOpacity>
+                    </View>
                 </View>
             </View>
         )
@@ -120,11 +88,11 @@ const Profile = (props) => {
 
     return (
         <TopScroolableTabBar
-            PostData={profileData.postData}
+            PostData={profileData.profileDetails.post}
             languageData={profileData.profileDetails.languagesSupported}
             ReviewData={profileData.profileDetails.review}
             AboutData={tab1Data}
-            ServicesData={profileData.profileDetails.servicesOffered}
+            ServicesData={profileData.services}
             postNumcols={3}
             languageNumcols={2}
             reviewNumcols={null}
@@ -138,7 +106,7 @@ const Profile = (props) => {
             }}
             rednerPostItem={({ item, index }) => {
                 return (
-                    <Posts data={profileData.postData} item={item} index={index} Loader={loader} {...props} />
+                    <Posts data={profileData.profileDetails.post} item={item} index={index} Loader={loader} {...props} />
                 )
             }}
             rednerLanguageItem={({ item }) => {
@@ -146,18 +114,20 @@ const Profile = (props) => {
                     <Languages data={item} {...props} />
                 )
             }}
-            rednerReviewItem={({ item }) => {
-                return (
-                    <Reviews data={item} {...props} />
-                )
-            }}
+            // rednerReviewItem={({ item }) => {
+            //     return (
+            //         <Reviews data={item} {...props} />
+            //     )
+            // }}
             rednerAboutItem={() => {
                 return (
                     null
                 )
             }}
             ListHeaderReviewComponent={
-                <HeaderList data={profileData.profileDetails.review} {...props} />
+                profileData?.profileDetails?.review.length>0?
+                <HeaderList data={profileData.profileDetails.review} {...props} />:
+                <EmptyScreen ScreenText={"No Review Avilabale"}/>
             }
             ListHeaderAboutComponent={
                 <AboutCompany data={profileData.profileDetails} {...props} />
@@ -167,8 +137,12 @@ const Profile = (props) => {
                 <EmptyScreen ScreenText={"No Services Avilabale"}/>
             }
             ListHeaderPostComponent={
-                profileData?.postData.length>0?null:
+                profileData?.profileDetails?.post.length>0?null:
                 <EmptyScreen ScreenText={"No Posts Avilabale"}/>
+            }
+            ListHeaderlanguageComponent={
+                profileData?.profileDetails?.languagesSupported.length>0?null:
+                <EmptyScreen ScreenText={"No Language Avilabale"}/>
             }
             Header={() => headerrender()}
 

@@ -60,11 +60,43 @@ export const google_Signup = (tokenId) => async (dispatch) => {
     "tokenId": tokenId
   };
   const res = await NetworkOps.post(ServiceEnum.gooleSignup, data);
+  if(res.status===true)
+  {
+    try {
+      await EncryptedStorage.setItem(
+          "access_token",
+          JSON.stringify({
+              token : res.token,
+              username : '',
+              isServiceProvider:false
+          })
+      );
+  } catch (error) {
+  }
+}
   console.log(res.email, "res")
   return res;
 };
 export const Apple_SignUp = (data) => async (dispatch) => {
   const res = await NetworkOps.post(ServiceEnum.appleSignup, data);
+  if(res.status===true)
+  {
+    try {
+      await EncryptedStorage.setItem(
+          "access_token",
+          JSON.stringify({
+              token : res.token,
+              username : '',
+              isServiceProvider:false
+          })
+      );
+  } catch (error) {
+  }
+}
   console.log(res, "res")
   return res;
 };
+export const verifyEmailUser = (data) => async (dispatch, getstate) => {
+  const res = await NetworkOps.post(ServiceEnum.verifyEmail,data);
+  return res;
+}

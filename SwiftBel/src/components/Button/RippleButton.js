@@ -25,7 +25,7 @@ const RippleButton = ({
         {
             indicator ?
                 (
-                    <View style={style.indicatorStyle}>
+                    <View style={[style.indicatorStyle,button,{backgroundColor:palette.smokeWhite}]}>
                         <ActivityIndicator size='small' color={palette.grey} animating={indicator} />
                         <Text style={{color:palette.grey,marginLeft:20}}>Loading...</Text>
                     </View>

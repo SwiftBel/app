@@ -4,15 +4,20 @@ const initialState = {
     bussinesname: {},
     location: {},
     mobileNo: '',
-    services:[],
-    addOwnerData:[],
-    profileImage:'',
-    address:[],
-    postData:[],
-    profileDetails:[],
-    bannerDetails:{},
-    isLoading:true,
-    licenseType:{}
+    services: [],
+    serviceProviderData: [],
+    finalData: {},
+    profileImage: '',
+    address: [],
+    postData: [],
+    profileDetails: [],
+    bannerDetails: {},
+    isLoading: true,
+    licenseType: {},
+    startingAdress: {},
+    destinationAdress: {},
+    distance: ''
+
 }
 
 const ProfileReducer = (state = initialState, action) => {
@@ -27,9 +32,9 @@ const ProfileReducer = (state = initialState, action) => {
         case TYPE.addlocation:
             return { ...state, location: action.payload }
         case TYPE.addService:
-            return { ...state, services:action.payload}
-        case TYPE.addOwner:
-            return { ...state, addOwnerData: action.payload }
+            return { ...state, services: action.payload }
+        case TYPE.ServiceProviderData:
+            return { ...state, serviceProviderData: action.payload }
         case TYPE.address:
             return { ...state, address: action.payload }
         case TYPE.profileToken:
@@ -38,10 +43,18 @@ const ProfileReducer = (state = initialState, action) => {
             return { ...state, postData: action.payload }
         case TYPE.profileDetails:
             return { ...state, profileDetails: action.payload }
-            case TYPE.bannerDetails:
-                return { ...state, bannerDetails: action.payload }
-                case TYPE.licenseType:
-                    return { ...state, licenseType: action.payload }
+        case TYPE.bannerDetails:
+            return { ...state, bannerDetails: action.payload }
+        case TYPE.licenseType:
+            return { ...state, licenseType: action.payload }
+        case TYPE.startingAddress:
+            return { ...state, startingAdress: action.payload }
+        case TYPE.destinationAddress:
+            return { ...state, destinationAdress: action.payload }
+        case TYPE.estimateDetails:
+            return { ...state, finalData: action.payload }
+        case TYPE.distance:
+            return { ...state, distance: action.payload }
         default:
             return state;
     }

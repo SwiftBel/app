@@ -5,4 +5,3 @@ export {default as Input} from '../components/TextField/Input';
 export {default as Header} from '../components/Header/Header';
 export {default as ProfileHeader} from '../components/Header/ProfileHeader';
 export {default as TextKeyValue} from '../components/TextKeyValue/TextKeyValue';
-export {default as SearchInput} from '../components/SearchInput/SearchInput';

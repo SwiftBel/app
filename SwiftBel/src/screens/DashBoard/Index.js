@@ -1,4 +1,3 @@
-
 import * as React from 'react'
 import {Image} from 'react-native'
 import {
@@ -13,6 +12,8 @@ import Setting from '../Settings';
 import HomePage from './homepage';
 import { useSelector, useDispatch } from 'react-redux'
 import { getBannerDetails, getProfileDetails } from '../../store/actions/Profile.action';
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
+import { ActionSheetProvider } from '../../context/ActionSheetProvider';
   const Tab = createBottomTabNavigator();
 const DashBoard=()=> {
   const dispatch=useDispatch()
@@ -26,6 +27,9 @@ const init = async () => {
     await dispatch(getBannerDetails())
 }
     return (
+      <ActionSheetProvider>
+      <BottomSheetModalProvider>
+        
         <Tab.Navigator
           initialRouteName="Setting"
         backBehavior='firstRoute'
@@ -119,6 +123,8 @@ const init = async () => {
               ),
             }} />
         </Tab.Navigator>
+        </BottomSheetModalProvider>
+        </ActionSheetProvider>
     );
   }
   export default DashBoard;

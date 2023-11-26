@@ -1,5 +1,5 @@
 //import Toast from "../components/toast/Toast";
-
+import EncryptedStorage from 'react-native-encrypted-storage';
 export const EmailValidation=(text)=>{
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
     if (reg.test(text) === false)
@@ -80,3 +80,10 @@ export  const focusField = (index, fields) => {
       fields.current[index] && fields.current[index].focus();
     }
   };
+
+  export const getToken=async()=> {
+    const token = await EncryptedStorage.getItem("access_token");
+    const session=await token?JSON.parse(token):''
+    console.log("<<<", session)
+    return session?true:false
+  }

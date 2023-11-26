@@ -20,6 +20,11 @@ const [indicator,setIndicatior]=React.useState(false)
 GoogleSignin.configure({
   
     webClientId: '542308296429-j962o48c4oao363p8583hcj4m86u7m51.apps.googleusercontent.com',
+    scopes:[
+     ' https://www.googleapis.com/auth/calendar',
+      'https://www.googleapis.com/auth/calendar.events',
+      ' https://www.googleapis.com/auth/business.manage'
+    ]
   });
   const signinwithgoogle= async()=>{
     await GoogleSignin.hasPlayServices();
@@ -27,8 +32,9 @@ GoogleSignin.configure({
     console.log(userInfo,"userinfo")
       if (userInfo) {
         const data = await GoogleSignin.getTokens();
+        console.log(data,"datata")
         setIndicatior(true)
-        const res= await dispatch(google_Signup(data.idToken))
+        const res= await dispatch(google_Signup(data))
         if (res.status === "success")
       {  props.navigation.navigate('Home')
         setIndicatior(false)}
@@ -77,12 +83,13 @@ GoogleSignin.configure({
     }
   }
     return (
-        <View>
+        <View style={{paddingTop:30}}>
             {
                 ListData.map((item)=>{
                     return(
+                      props?.type?item.name=='Google'?
                         <ButtonWithImageIndicator
-                        ButtonLeftText= {item.name}
+                        ButtonLeftText= {`Continue with ${item.name}`}
                         buttonLeftTextStyle={Style.footerText}
                         ButtonStyle={Style.footerButton}
                         imageStyle={Style.BottomIcon}
@@ -90,11 +97,21 @@ GoogleSignin.configure({
                         key={item.key}
                         indicator={item.name=='Google'?indicator:false}
                         onClick={()=>item.name=='Email'?navigation.navigate('MailSignUp'):item.name=='Google'?signinwithgoogle():onAppleButtonPress()}
-                      /> 
+                      /> :null:
+                      <ButtonWithImageIndicator
+                      ButtonLeftText= {`Continue with ${item.name}`}
+                      buttonLeftTextStyle={Style.footerText}
+                      ButtonStyle={Style.footerButton}
+                      imageStyle={Style.BottomIcon}
+                      imageSource={item.icon}
+                      key={item.key}
+                      indicator={item.name=='Google'?indicator:false}
+                      onClick={()=>item.name=='Email'?navigation.navigate('MailSignUp'):item.name=='Google'?signinwithgoogle():onAppleButtonPress()}
+                    />
                     )
                 })
             }
-             <Text style={[Style.acknoledgeText,{marginBottom:20,textAlign:'center',lineHeight:20}]}>
+             {/* <Text style={[Style.acknoledgeText,{marginBottom:20,textAlign:'center',lineHeight:20}]}>
                  {Authentication.BytappingCreateanAccount}
                 <Text style={Style.policText}>
                 {Authentication.TermsofService}
@@ -114,7 +131,7 @@ GoogleSignin.configure({
                 <Text style={Style.policText}>
                 {Authentication.PrivacyPolicy}
                 </Text>
-                </Text>
+                </Text> */}
         </View>
     );
 }

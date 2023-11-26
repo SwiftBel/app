@@ -7,6 +7,7 @@ export const loginId = (payload) => ({
     type: TYPE.LoginMail,
     payload,
   });
+  export const genAction = (type, payload) => ({ type, payload })
 
 export const loginUser=(data)=>async (dispatch)=>{
     const res = await NetworkOps.post(ServiceEnum.loginUser,data);
@@ -18,13 +19,14 @@ export const loginUser=(data)=>async (dispatch)=>{
             JSON.stringify({
                 token : res.token,
                 username : res.uniqueUrl,
-                isServiceProvider:res.data.isServiceProvider
+                isServiceProvider:false
             })
         );
     } catch (error) {
     }
     console.log(res.token,"token")
       dispatch({type:TYPE.authToken,payload:res.token})
+      dispatch(genAction(TYPE.profileDetails, res.data));
 }
 
       

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import Welcome from '../screens/Home/Welcome';
 import SignUp from '../screens/signUp/Index';
 import MailSignUp from '../screens/signUp/MailSignUp';
@@ -15,22 +15,58 @@ import LoginMail from '../screens/login/loginWithMail/loginMail';
 import OpeningPage from '../screens/DashBoard/homepage/index'
 import SearchFilter from '../screens/searchFilter';
 import CompanyFilter from '../screens/companyFilter';
-const Stack = createNativeStackNavigator();
+import spProfile from '../screens/profile/Profile'
+import ConfirmPayment from '../screens/confirmPayment';
+import LocationTraker from '../screens/searchFilter/LocationTraker';
+import LocationDestinationTraker from '../screens/searchFilter/DestinationLocationTracker';
+import Estimate from '../screens/estimate/Estimate';
+import ScreenSplash from '../screens/DashBoard/homepage/SplashScreen';
+import GetPrice from '../screens/estimate/GetPrice';
+const Stack = createStackNavigator();
 
-function SignUpNavigator() {
+function SignUpNavigator(props) {
+    const [index, setIndex] = React.useState(0);
     return (
         <Stack.Navigator
-            screenOptions={() => ({
-                headerBackTitleVisible: false,
-                gestureEnabled: false,
-                headerShown: false,
-            })}
-        >
+       // mode="modal"
+       
+        screenOptions={{
+       
+        headerBackTitleVisible: false,
+        gestureEnabled: false,
+        headerShown: false,
+        }}>
+ <Stack.Screen   options={{
+   gestureEnabled:false
+ }}  name="ScreenSplash" component={ScreenSplash} />
+            <Stack.Screen  name="DashBoard" component={DashBoard} />
+            <Stack.Screen name="openingPage"  options={{
+                animationEnabled:true,
+                
+          cardStyle: {
+            backgroundColor: 'transparent',
+          },
+          cardStyleInterpolator: ({current}) => ({
+            cardStyle: {
+              opacity: current.progress,
+            },
+          }),
+        }}  >{props=><OpeningPage {...props}index={index} setIndex={setIndex}/>}</Stack.Screen>
+            <Stack.Screen  options={{
+        
+          cardStyleInterpolator: ({current}) => ({
+            cardStyle: {
+              opacity: current.progress,
+            
+            },
+          }),
+        }} name="SearchFilter"  >
 
-            <Stack.Screen name="DashBoard" component={DashBoard} />
-            <Stack.Screen name="openingPage" component={OpeningPage} />
-            <Stack.Screen name="SearchFilter" component={SearchFilter} />
+{props => <SearchFilter {...props} index={index} setIndex={setIndex} />}
+        </Stack.Screen>
             <Stack.Screen name="CompanyFilter" component={CompanyFilter} />
+            <Stack.Screen name="Estimate" component={Estimate} />
+            <Stack.Screen name="getPrice" component={GetPrice} />
 
             {/* {.............................SignUp-Authentication........................} */}
 
@@ -50,6 +86,12 @@ function SignUpNavigator() {
             {/* {.............................Login-Authentication........................} */}
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="LoginMail" component={LoginMail} />
+
+            {/* ...............................SpProfile.............................*/}
+            <Stack.Screen name="SpProfile" component={spProfile} />
+            <Stack.Screen name="ConfirmPayment" component={ConfirmPayment} />
+            <Stack.Screen name="LocationTraker" component={LocationTraker} />
+            <Stack.Screen name="LocationDestinationTraker" component={LocationDestinationTraker} />
 
         </Stack.Navigator>
     );

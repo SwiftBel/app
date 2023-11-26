@@ -66,7 +66,7 @@ const Constants={
         mobileNumber:'MOBILE_NUMBER',
         addService:'ADD_SERVICE',
         addPicture:'ADD_PICTURE',
-        addOwner:'ADD_OWNER',
+        ServiceProviderData:'SERVICE_PROVIDERDATA',
         Businessname:'BUSINESS_NAME',
         addlocation:'ADD_LOCATION',
         authToken:'AUTH_TOKEN',
@@ -75,7 +75,11 @@ const Constants={
         PostData:'POST_DATA',
         profileDetails:'PROFILE_DETAILS',
         bannerDetails:'BANNER_DETAILS',
-        licenseType:'LICENSE_TYPE'
+        licenseType:'LICENSE_TYPE',
+        startingAddress:'STARTING_ADDRESS',
+        destinationAddress:'DESTINATION_ADDRESS',
+        estimateDetails:'ESTIMATEDETAILS',
+        distance:'DISTANCE'
     }
     
 }

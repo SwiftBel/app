@@ -60,14 +60,29 @@ export default {
         marginRight:wp('5%'),
         color:palette.black
     },
-    newPostButton:{
+    favourateButton:{
         borderRadius:25,
-        width:wp('60%')
+        width:wp('40%')
+        ,backgroundColor:palette.white,
+        height:45,
+        justifyContent:'center',
+        marginRight:10,
+        borderWidth:1
+    },
+    bookButton:{
+        borderRadius:25,
+        width:wp('50%')
         ,backgroundColor:palette.black,
         height:45,
-        justifyContent:'center'
+        justifyContent:'center',
+       // marginLeft:10
     },
-    newPostButtonText:{
+    favourateButtonText:{
+        fontSize:14,
+        color:palette.black,
+        textAlign:'center'
+    },
+    bookButtonText:{
         fontSize:14,
         color:palette.white,
         textAlign:'center'

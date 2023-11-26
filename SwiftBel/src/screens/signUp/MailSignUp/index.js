@@ -69,7 +69,7 @@ const MailSignUp = (props) => {
                             placeholder={'Email'}
                             onChangeText={(text) => emailValidation(text)}
                             leftIcon={email.length ? validation ? Right : Caution : ''}
-                            inputStyle={{ borderRadius: 40, }}
+                            inputStyle={{ borderRadius: 10, }}
                             borderColor={email.length ? validation ? palette.black : palette.pink : palette.black}
                             value={email}
                             secureTextEntry={false}

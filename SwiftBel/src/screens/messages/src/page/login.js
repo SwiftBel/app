@@ -79,8 +79,9 @@ const Login = props => {
   };
   return (
     <>
-      <StatusBar backgroundColor="#742ddd" barStyle="light-content" />
-      <SafeAreaView style={style.container}>
+      <StatusBar barStyle='dark-content' />
+      <Text style={{textAlign:'center',marginTop:100}}>Connecting....</Text>
+      {/* <SafeAreaView style={style.container}>
         <View style={style.logoContainer}>
           <Image source={require('../asset/logo.png')} style={style.logo} />
           <Text style={style.subtitle}>Powered by React Native</Text>
@@ -111,7 +112,7 @@ const Login = props => {
             <Text style={style.loginButtonLabel}>Connect</Text>
           </TouchableOpacity>
         </View>
-      </SafeAreaView>
+      </SafeAreaView> */}
     </>
   );
 };

@@ -10,8 +10,8 @@ export default {
         marginRight:wp('5%'),
     },
     keyStyle:{
-        fontSize:16,
-        color:palette.black,
+        fontSize:14,
+        color:palette.grey,
         marginRight:wp('1%'),
         fontWeight:'500',
         fontFamily:"Roobert-Medium",
@@ -22,5 +22,19 @@ export default {
         color:palette.black,
         marginRight:wp('1%'),
         paddingTop:hp('1%'),
+    },
+    horizontalKey:{
+        fontSize:14,
+        color:palette.grey,
+        marginLeft:wp('0.5%'),
+        fontWeight:'500',
+        paddingTop:hp('2%'),
+    },
+    horizontalValueStyle:{
+        fontSize:16,
+        color:palette.black,
+        marginRight:wp('1%'),
+        paddingTop:hp('2%'),
+        
     }
 }

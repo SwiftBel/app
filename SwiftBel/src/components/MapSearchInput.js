@@ -28,7 +28,9 @@ const MapSearchInput = (props) => {
                 key: 'AIzaSyDC8F29YJAnHp6qxyBf7YWFGPzj-c04rRA',
                 language: 'en',
             }}
+            disableScroll={props?.disableScroll}
             enablePoweredByContainer={false}
+            keyboardShouldPersistTaps='always'
             GooglePlacesDetailsQuery={{
                 fields: 'formatter_details'
             }}
@@ -39,8 +41,7 @@ const MapSearchInput = (props) => {
             }}
             styles={{
                 textInput: {
-                    borderRadius: 25,
-                    color:palette.black,
+                 
                     ...props?.textInputStyle
                 },
                 poweredContainer:{
@@ -51,8 +52,14 @@ const MapSearchInput = (props) => {
                },
                predefinedPlacesDescription:{
                    color:palette.black
+               },
+               listView:{
+                   zIndex:10000000,
+                  ...props?.listView,
+                  
                }
             }}
+            
         />
     )
 }

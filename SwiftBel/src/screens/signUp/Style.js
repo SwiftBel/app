@@ -5,10 +5,10 @@ import {
     } from '../../utils/Responsive/index'
 export default{
     container:{
-        flex: 1, 
+      
         alignItems: 'center', 
         justifyContent: 'center' ,
-        backgroundColor:palette.babyPink
+        backgroundColor:palette.white
     },
     Logo_style:{
         width:100,
@@ -27,50 +27,64 @@ export default{
         width:wp('100%'),
     },
     bottomText:{
+       
         fontSize:14,
         fontWeight:'400',
         fontStyle:'normal',
-        marginBottom:hp("2%"),
-        color:palette.black
+        color:palette.black,
     },
     button:{
-        backgroundColor:palette.black,
-        height:44,
-        width:wp('40%'),
-        borderRadius:22,
+        backgroundColor:palette.pink,
+        height:60,
+        width:wp('90%'),
+        borderRadius:10,
         justifyContent:'center',
         alignItems:'center',
-        marginBottom:hp("2%")
+        marginTop:hp("4%"),
+        marginBottom:hp("1%")
     },
     buttonText:{
         color:palette.white,
-        fontSize:14,
-        fontWeight:'400',
+        fontSize:18,
+        fontWeight:'500',
         textAlign:'center'
     },
     BottomIcon:{
         alignSelf:'center',
-        width:15,
-        height:19,
+        width:16,
+        height:20,
         marginRight:wp('2%'),
+        position:'absolute',
+        left:20
     },
     footerButton:{
         backgroundColor:palette.white,
         borderWidth:1,
-        borderColor:palette.smokeWhite,
-        height:50,
+        borderColor:palette.grey,
+        height:55,
         width:wp('90%'),
-        borderRadius:22,
+        borderRadius:10,
         flexDirection:'row',
         justifyContent:'center',
         alignItems:'center',
-        marginBottom:hp("2%")
+        marginTop:hp("1%"),
+
     },
     footerText:{
         color:palette.black,
-        fontSize:14,
-        fontWeight:'400',
+        fontSize:16,
+        fontWeight:'500',
         textAlign:'center'
+    },
+    orText:{
+        width:30,
+        height:30,
+        borderRadius:30,
+        backgroundColor:palette.white,
+        position:'absolute',
+        top:-10,
+        alignItems:'center',
+        borderColor:palette.lightGrey
     },
     acknoledgeText:{
         fontSize:12,
@@ -130,4 +144,40 @@ Button:{
         fontWeight:'400',
         paddingLeft:wp('6%')
     },
+    modatHeaderText:{
+        
+        alignSelf: 'center', 
+        fontSize: 18, 
+        fontWeight: '500', 
+
+    },
+    text:{
+        color:palette.grey,
+        alignSelf: 'center', 
+        fontSize: 16, 
+        fontWeight: '400', 
+        marginBottom:10
+    },
+    nametext:{
+        color:palette.black,
+        alignSelf: 'center', 
+        fontSize: 16, 
+        fontWeight: '500', 
+        marginTop:10
+    },
+    profileContainer:{
+        borderRadius:400,
+       
+        height:Platform.OS==='ios'?hp('10%'): hp('14%'), 
+        width: Platform.OS==='ios'?wp('21%'): hp('14%'),
+ 
+        marginTop:hp('3%'),
+
+    },
+    profileImage:{
+        alignSelf:'center',
+         height:'97%',
+         width:'97%',
+         borderRadius:400
+     },
 }

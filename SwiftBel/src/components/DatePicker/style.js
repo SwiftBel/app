@@ -8,7 +8,7 @@ const { height, width } = Dimensions.get('window')
 const PADDING = 8
 const BORDER_RADIUS = 20
 const FONT_SIZE = 18
-const OPTION_CONTAINER_HEIGHT = 450
+const OPTION_CONTAINER_HEIGHT = 400
 const colorSet = palette
 
 export default {
@@ -23,7 +23,7 @@ export default {
       width: width * 1,
       backgroundColor: "#F5F5F5",
       left: width * 0.00,
-      height:500,
+      height:400,
       top: Platform.OS === 'android'?(height - OPTION_CONTAINER_HEIGHT) / 2.25 : (height - OPTION_CONTAINER_HEIGHT) / 1.00,
     },
 
@@ -142,7 +142,9 @@ export default {
     flexDirection: 'row', 
     alignItems: 'center', 
     marginLeft:wp('5%'), 
-    marginRight: wp('5%')
+    marginRight: wp('5%'),
+    position:'absolute',
+    bottom:10
   },
   datePicker: {
     width: 320,

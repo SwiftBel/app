@@ -110,7 +110,8 @@ const DatesPicker = (props) => {
     </View>
   }
   return (
-    <View style={props.PickerContainerStyle} >
+    <View style={[props.PickerContainerStyle,{alignItems:'center'}]} >
+      <View style={{borderWidth:1,padding:10,borderRadius:10,width:'95%',borderColor:palette.lightGrey}}>
       {props.headerName ? <Text style={styles.headerText}>{props.headerName}</Text> : null}
       {Platform.OS == 'android' ? null : <View style={[styles.btnContainer]}>
         <TouchableOpacity onPress={() => {
@@ -118,7 +119,7 @@ const DatesPicker = (props) => {
           setOnFocus(true)
         }} style={[styles.PickerButton, props.buttonStyle, { borderColor: onFocus ? palette.black : palette.lightGrey }]}>
           <View style={styles.PickerButtonContainer}>
-            <Text style={styles.PickerButtontext}>{props.value}</Text>
+            <Text style={styles.PickerButtontext}>{props.placeholder?props.placeholder:props.value}</Text>
             <Image
               source={chevrondown}
               resizeMode='contain'
@@ -126,9 +127,10 @@ const DatesPicker = (props) => {
             />
           </View>
         </TouchableOpacity>
+       
       </View>}
       {Platform.OS == 'android' ? renderDataAndroid() : renderPickerIOS()}
-
+      </View>
     </View>
   );
 };
@@ -139,6 +141,7 @@ DatesPicker.defaultProps = {
   headerName: '',
   onCancel: () => { },
   OnSelected: () => { },
+  placeholder:'',
   modalHeader:''
 }
 export default DatesPicker;
